@@ -1,0 +1,6 @@
+go 1.23.5
+
+use (
+	./demo/demo_proto
+	./demo/demo_thrift
+)
