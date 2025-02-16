@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/persue1/CloudWego/demo/demo_proto/biz/model"
 	"github.com/persue1/CloudWego/demo/demo_proto/conf"
 
 	"gorm.io/driver/mysql"
@@ -32,7 +33,9 @@ func Init() {
 		panic(err)
 	}
 
-	type Version struct{
+	DB.AutoMigrate(&model.User{})
+
+	type Version struct {
 		Version string
 	}
 
@@ -40,7 +43,7 @@ func Init() {
 
 	err = DB.Raw("select version() as version").Scan(&v).Error
 
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 
